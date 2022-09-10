@@ -8,6 +8,7 @@ public:
 	~DBManager() = default;
 
 	struct DBEntry {
+		DBEntry() = default;
 		DBEntry(std::string n, short int g) : studentName{ n }, grade{ g } {};
 		std::string studentName;
 		short int grade;
@@ -20,5 +21,8 @@ public:
 
 private:
 	std::unordered_map<std::string, int> gradeBook;
+	bool isGradeValid(short int grade);
+	bool isNameAlreadyInDB(std::string name);
+	bool isNameFormatCorrect(std::string name);
 };
 
