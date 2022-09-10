@@ -1,17 +1,21 @@
 #include "DBManager.h"
+#include <iostream>
+#include <algorithm>
+#include "UIDBContext.h"
 
 int main() {
 	DBManager dbmanager;
+	UIDBContext uidbcontext;
 
 	// add new entries:
+	dbmanager.addEntry("H", 4);
 	dbmanager.addEntry("A", 4);
-	dbmanager.addEntry("B", 2);
-	dbmanager.addEntry("C", 3);
 	dbmanager.addEntry("D", 6);
+	dbmanager.addEntry("C", 3);
 	dbmanager.addEntry("E", 1);
 	dbmanager.addEntry("F", 1);
+	dbmanager.addEntry("B", 2);
 	dbmanager.addEntry("G", 4);
-	dbmanager.addEntry("H", 4);
 	dbmanager.addEntry("I", 7);
 	dbmanager.addEntry("", 1);
 
@@ -28,6 +32,18 @@ int main() {
 
 	// get all entries:
 	std::vector<DBManager::DBEntry> entries = dbmanager.getEntries();
+
+	// send entry to cout stream:
+	std::cout << entries[1];
+
+	// read entry from cout stream:
+	std::cin >> entries[0];
+
+	// sort using default lambda from UIDBContext class
+	std::sort(entries.begin(), entries.end(), uidbcontext.getSortingFunction());
+
+	// filter using default lambda from UIDBContext class
+
 
 	return 0;
 }

@@ -12,6 +12,9 @@ public:
 		DBEntry(std::string n, short int g) : studentName{ n }, grade{ g } {};
 		std::string studentName;
 		short int grade;
+
+		friend std::ostream& operator<<(std::ostream& os, const DBEntry& entry);
+		friend std::istream& operator>>(std::istream& is, DBEntry& entry);
 	};
 
 	void addEntry(std::string studentName, short int grade);

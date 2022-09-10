@@ -66,3 +66,24 @@ bool DBManager::isNameAlreadyInDB(std::string name) {
 bool DBManager::isNameFormatCorrect(std::string name) {
 	return name.compare("") != 0;
 }
+
+std::ostream& operator<<(std::ostream& os, const DBManager::DBEntry& entry) {
+	os << entry.studentName << std::endl;
+	os << entry.grade << std::endl;
+
+	return os;
+}
+
+std::istream& operator>>(std::istream& is, DBManager::DBEntry& entry) {
+	// TODO: How to set failbit correctly? How to determine whether values in is are proper?
+	is >> entry.studentName;
+	is >> entry.grade;
+	if (entry.studentName == "" || entry.grade == 0) {
+		is.setstate(std::ios::failbit);
+	}
+
+	// TODO: Maybe I should handle exceptions thrown by methods like std::string >> operator etc.
+
+	return is;
+}
+
