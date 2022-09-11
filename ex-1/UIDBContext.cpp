@@ -6,7 +6,7 @@ UIDBContext::UIDBContext() {
 
         if (leftOne.studentName.compare(rightOne.studentName) < 0) { // TODO: test the following cases: "A" vs "B", "a" vs "B". "A" vs "b" 
             // do they result in the same thing? If not, use toupper...
-            isLeftOneLess = true;
+            isLeftOneLess = false;
         }
 
         return isLeftOneLess;

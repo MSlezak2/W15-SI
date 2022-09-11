@@ -17,9 +17,9 @@ public:
 		friend std::istream& operator>>(std::istream& is, DBEntry& entry);
 	};
 
-	void addEntry(std::string studentName, short int grade);
-	void removeEntry(std::string studentName);
-	void modifyEntry(std::string studentName, short int newGrade);
+	bool addEntry(std::string studentName, short int grade);
+	bool removeEntry(std::string studentName);
+	bool modifyEntry(std::string studentName, short int newGrade);
 	std::vector<DBEntry> getEntries();
 
 private:

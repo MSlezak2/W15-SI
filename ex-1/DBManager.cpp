@@ -5,7 +5,9 @@
 
 // If name or grade are invalid or there is already student with such name in db
 // it does nothing but displays a warning
-void DBManager::addEntry(std::string studentName, short int grade) {
+bool DBManager::addEntry(std::string studentName, short int grade) {
+	bool operationCompleted{ false };
+	
 	if (!isGradeValid(grade)) {
 		std::cout << "Add operation failed: Provided grade is out of range... Please enter the correct one." << std::endl;
 	} else if (isNameAlreadyInDB(studentName)) {
@@ -14,27 +16,36 @@ void DBManager::addEntry(std::string studentName, short int grade) {
 		std::cout << "Add operation failed: Provided name is in incorrect format..." << std::endl;
 	} else {
 		gradeBook.insert({ studentName, grade });
+		operationCompleted = true;
 	} 
+
+	return operationCompleted;
 }
 
 // Does nothing but warns you if there's no entry with given name
-void DBManager::removeEntry(std::string studentName) {
+bool DBManager::removeEntry(std::string studentName) {
+	bool operationCompleted{ false };
 	if (!isNameAlreadyInDB(studentName)) {
 		std::cout << "Remove operation failed: There's no such student in a database..." << std::endl;
 	} else {
 		gradeBook.erase(studentName);
+		operationCompleted = true;
 	}
+	return operationCompleted;
 }
 
 // Does nothing but warns you if there's no entry with given name
-void DBManager::modifyEntry(std::string studentName, short int newGrade) {
+bool DBManager::modifyEntry(std::string studentName, short int newGrade) {
+	bool operationCompleted{ false };
 	if (!isNameAlreadyInDB(studentName)) {
 		std::cout << "Modify operation failed: There's no such student in a database..." << std::endl;
 	} else if (!isGradeValid(newGrade)) {
 		std::cout << "Modify operation failed: Provided grade is out of range..." << std::endl;
 	} else {
 		gradeBook.at(studentName) = newGrade;
+		operationCompleted = true;
 	}
+	return operationCompleted;
 }
 
 std::vector<DBManager::DBEntry> DBManager::getEntries() {

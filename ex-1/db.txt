@@ -1,0 +1,11 @@
+5
+Michal2
+5
+Rafal
+2
+Szymon
+1
+Marek
+4
+Maciek
+3
