@@ -30,7 +30,7 @@ void OperatorManager::unregisterOperator(std::string name) {
 	}
 }
 
-ArithmeticOperator OperatorManager::findOperator(std::string name) {
+ArithmeticOperator OperatorManager::findOperator(std::string name) const {
 	//TODO: Figure out how to return the reference to the operator (or maybe const reference)
 	std::unordered_set<ArithmeticOperator>::iterator theOperator =
 		std::find_if(operators.begin(), operators.end(), [name](ArithmeticOperator op) {

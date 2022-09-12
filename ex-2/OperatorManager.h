@@ -12,7 +12,7 @@ public:
 		std::function<double(const double, const double)> function, 
 		unsigned short int priority);
 	void unregisterOperator(std::string name);
-	ArithmeticOperator findOperator(std::string name);
+	ArithmeticOperator findOperator(std::string name) const;
 	std::unordered_set<ArithmeticOperator>& getOperators(); //TODO: Did they really meant returns "reference to ..."?
 
 private:
