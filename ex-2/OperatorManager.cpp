@@ -3,6 +3,7 @@
 
 void OperatorManager::registerOperator(std::string name, std::string symbol, std::function<double(const double, const double)> function, unsigned short int priority) {
 	//TODO: That's probably unnecessary - insert() returns information whether it could put a new one into the set
+	// Check whether there already is an operator with such name
 	std::unordered_set<ArithmeticOperator>::iterator operatorWithSuchName =
 		std::find_if(operators.begin(), operators.end(), [name](ArithmeticOperator op) {
 		return (op.getName().compare(name) == 0);
@@ -18,6 +19,7 @@ void OperatorManager::registerOperator(std::string name, std::string symbol, std
 
 void OperatorManager::unregisterOperator(std::string name) {
 	//TODO: That's probably also unnecessary, erase() method returns relevant info (...)
+	// Check whether there is an operator with such name
 	std::unordered_set<ArithmeticOperator>::iterator theOperator = 
 		std::find_if(operators.begin(), operators.end(), [name](ArithmeticOperator op) {
 			return (op.getName().compare(name) == 0);
@@ -32,14 +34,15 @@ void OperatorManager::unregisterOperator(std::string name) {
 
 ArithmeticOperator OperatorManager::findOperator(std::string name) const {
 	//TODO: Figure out how to return the reference to the operator (or maybe const reference)
+	//TODO: What to do if there's no such operator?
 	std::unordered_set<ArithmeticOperator>::iterator theOperator =
 		std::find_if(operators.begin(), operators.end(), [name](ArithmeticOperator op) {
 		return (op.getName().compare(name) == 0);
 			});
 
-	return *theOperator;
+	return (*theOperator) ;
 }
 
-std::unordered_set<ArithmeticOperator>& OperatorManager::getOperators() {
+std::unordered_set<ArithmeticOperator, ArithmeticOperator::HashFunction>& OperatorManager::getOperators() {
 	return operators;
 }

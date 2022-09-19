@@ -13,9 +13,9 @@ public:
 		unsigned short int priority);
 	void unregisterOperator(std::string name);
 	ArithmeticOperator findOperator(std::string name) const;
-	std::unordered_set<ArithmeticOperator>& getOperators(); //TODO: Did they really meant returns "reference to ..."?
+	std::unordered_set<ArithmeticOperator, ArithmeticOperator::HashFunction>& getOperators(); //TODO: Did they really meant returns "reference to ..."?
 
 private:
-	std::unordered_set<ArithmeticOperator> operators; //TODO: Is that the right container for the job?
+	std::unordered_set<ArithmeticOperator, ArithmeticOperator::HashFunction> operators; //TODO: Is that the right container for the job?
 };
 

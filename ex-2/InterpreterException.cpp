@@ -1,7 +1,17 @@
 #include "InterpreterException.h"
 
+InterpreterException::InterpreterException(std::string interpreterName, std::string errorMessage, std::string faultyExpression) {
+    
+    std::string tempExceptionMessage;
+    tempExceptionMessage.append(interpreterName);
+    tempExceptionMessage.append(" error: ");
+    tempExceptionMessage.append(errorMessage);
+    tempExceptionMessage.append(" : ");
+    tempExceptionMessage.append(faultyExpression);
+
+    strcpy_s(exceptionMessage, tempExceptionMessage.size(), tempExceptionMessage.c_str());
+}
+
 const char* InterpreterException::what() const noexcept {
-    std::string message = interpreterName + " error: " + errorMessage + " : "
-        + faultyExpression;
-    return message.c_str();
+    return exceptionMessage;
 }
