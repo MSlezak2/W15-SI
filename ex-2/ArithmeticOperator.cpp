@@ -11,3 +11,7 @@ double ArithmeticOperator::operator()(const double leftTerm, const double rightT
 std::string ArithmeticOperator::getName() noexcept {
     return name;
 }
+
+std::string ArithmeticOperator::getSymbol() noexcept {
+    return symbol;
+}

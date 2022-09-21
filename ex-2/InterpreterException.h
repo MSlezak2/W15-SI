@@ -9,7 +9,7 @@ public:
 	virtual const char* what() const noexcept override;
 
 private:
-	char exceptionMessage[1000];
+	std::string exceptionMessage;
 };
 
 

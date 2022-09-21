@@ -2,16 +2,13 @@
 
 InterpreterException::InterpreterException(std::string interpreterName, std::string errorMessage, std::string faultyExpression) {
     
-    std::string tempExceptionMessage;
-    tempExceptionMessage.append(interpreterName);
-    tempExceptionMessage.append(" error: ");
-    tempExceptionMessage.append(errorMessage);
-    tempExceptionMessage.append(" : ");
-    tempExceptionMessage.append(faultyExpression);
-
-    strcpy_s(exceptionMessage, tempExceptionMessage.size(), tempExceptionMessage.c_str());
+    exceptionMessage .append(interpreterName);
+    exceptionMessage .append(" error: ");
+    exceptionMessage .append(errorMessage);
+    exceptionMessage .append(" : ");
+    exceptionMessage .append(faultyExpression);
 }
 
 const char* InterpreterException::what() const noexcept {
-    return exceptionMessage;
+    return exceptionMessage.c_str();
 }

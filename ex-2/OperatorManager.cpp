@@ -32,15 +32,20 @@ void OperatorManager::unregisterOperator(std::string name) {
 	}
 }
 
-ArithmeticOperator OperatorManager::findOperator(std::string name) const {
+ArithmeticOperator OperatorManager::findOperator(std::string symbol) const {
 	//TODO: Figure out how to return the reference to the operator (or maybe const reference)
 	//TODO: What to do if there's no such operator?
 	std::unordered_set<ArithmeticOperator>::iterator theOperator =
-		std::find_if(operators.begin(), operators.end(), [name](ArithmeticOperator op) {
-		return (op.getName().compare(name) == 0);
+		std::find_if(operators.begin(), operators.end(), [symbol](ArithmeticOperator op) {
+		return (op.getSymbol().compare(symbol) == 0);
 			});
+	
+	if (theOperator != operators.end()) { //TODO: How to do it my way (assign it to the variable and then return)?
+		return (*theOperator);
+	} else {
+		return ArithmeticOperator(); // TODO: Should I throw an exception or what? If so - custom one or one of predefined?
+	}
 
-	return (*theOperator) ;
 }
 
 std::unordered_set<ArithmeticOperator, ArithmeticOperator::HashFunction>& OperatorManager::getOperators() {

@@ -6,7 +6,7 @@ class OperatorManager {
 public:
 	//TODO: Place noexcept keywords where it's appropriate
 	OperatorManager() = default;
-	~OperatorManager() = default;
+	~OperatorManager() noexcept = default;
 
 	void registerOperator(std::string name, std::string symbol,
 		std::function<double(const double, const double)> function, 

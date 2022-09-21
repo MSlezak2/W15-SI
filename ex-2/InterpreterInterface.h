@@ -4,7 +4,7 @@
 
 class InterpreterInterface {
 public:
-	virtual ~InterpreterInterface() = default;
+	virtual ~InterpreterInterface() noexcept = default;
 	
 	virtual double interpret(const std::string& in, const OperatorManager& om) = 0;
 
